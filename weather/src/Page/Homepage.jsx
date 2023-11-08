@@ -58,25 +58,26 @@ const Homepage=()=>{
            handalCity()
     },[city])
     return (
-        <div style={{backgroundImage:"url(https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?cs=srgb&dl=pexels-pixabay-209831.jpg&fm=jpg)"}} >
-            <h1>Weather app</h1>
-            <div style={{width:"90%",display:"flex",margin:"auto",justifyContent:"space-between",paddingLeft:"20px",paddingRight:"20px",paddingTop:"0px",paddingBottom:"0px",height:"20px"}}>
-                <div style={{display:"flex",alignItems:"center"}}>
-                <h2 style={{color:"white"}}>City :</h2>
-                <input style={{width:"1000px"}} onChange={(e)=>setCity(e.target.value)} type="text" placeholder="enter city"/>
-                </div>
-                <button onClick={handalCity} type="submit">Search Weather</button>
+        <div style={{backgroundImage:"url(https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?cs=srgb&dl=pexels-pixabay-209831.jpg&fm=jpg)",paddingTop:"20px"}} >
+            
+            <div style={{width:"90%",display:"flex",margin:"auto",justifyContent:"space-between",paddingLeft:"20px",paddingRight:"20px",paddingTop:"0px",paddingBottom:"0px",height:"50px",boxShadow:"rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",marginBottom:"20px",marginTop:"20px"}}>
+                <div style={{display:"flex",alignItems:"center",alignSelf:"center"}}>
+                <h2 style={{color:"white"}}>City:-</h2>
+                <input style={{width:"900px",height:"45px",fontSize:"20px",textAlign:"center"}} onChange={(e)=>setCity(e.target.value)} type="text" placeholder="enter city name"/>
+                </div >
+                <button style={{width:"20%",fontSize:"20px",fontWeight:"bold"}} onClick={handalCity} type="submit">Search Weather</button>
             </div>
-            <div style={{display:"flex",width:"90%",margin:"auto",justifyContent:"space-between"}}>
-            <div key={data.id} style={{backgroundImage:"url(https://img.freepik.com/free-vector/dark-watercolor-background-design_1034-738.jpg)",width:"50%"}}>
+            <h1 style={{color:"white"}}>Weather Information</h1>
+            <div style={{display:"flex",width:"90%",margin:"auto",justifyContent:"space-between",marginBottom:"20px"}}>
+            <div key={data.id} style={{backgroundColor:"teal",width:"50%",padding:"20px"}}>
                     <h1 style={{color:"white"}}>City : {data.name}</h1>
                 
-                  <div style={{display:"flex",justifyContent:"space-around", backgroundColor:"whitesmoke"}}>
+                  <div style={{display:"flex",justifyContent:"space-around", backgroundColor:"whitesmoke",marginBottom:"20px"}}>
                     
                       <h2>min temp - {min}</h2>
                       <h2>max temp - {max}</h2>
                   </div>
-                  <div style={{display:"flex"}}>
+                  <div style={{display:"flex",justifyContent:"space-between"}}>
                      <div>
                      <h3>Sunrise : {rise}</h3>
                      <h3>Sunset : {set}</h3>
