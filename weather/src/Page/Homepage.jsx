@@ -21,8 +21,8 @@ const Homepage=()=>{
      const year = today.getFullYear();
      const date = today. getDate();
      const currentDate = month + "/" + date + "/" + year;
-     const fetchReq=async()=>{
-       await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&q=${city}&appid=${api_key}`)
+     const fetchReq=()=>{
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&q=${city}&appid=${api_key}`)
         .then((req)=>{
             return req.json()
         })
@@ -65,7 +65,7 @@ const Homepage=()=>{
            fetchReq()
            getGeocur()
            handalCity()
-    },[city])
+    },[])
     return (
         <div style={{backgroundImage:"url(https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?cs=srgb&dl=pexels-pixabay-209831.jpg&fm=jpg)",paddingTop:"20px"}} >
             
