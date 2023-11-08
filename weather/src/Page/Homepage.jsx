@@ -16,8 +16,13 @@ const Homepage=()=>{
     const [set,setSet]=useState("")
     //const temp=''
      const api_key="3f9eb30a8c0b0d47f7cbdf5d16ba8100"
+     const today=new Date();
+     const month = today.getMonth()+1;
+     const year = today.getFullYear();
+     const date = today. getDate();
+     const currentDate = month + "/" + date + "/" + year;
      const fetchReq=async()=>{
-       await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`)
+       await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&q=${city}&appid=${api_key}`)
         .then((req)=>{
             return req.json()
         })
@@ -75,6 +80,7 @@ const Homepage=()=>{
             <div style={{display:"flex",width:"90%",margin:"auto",justifyContent:"space-between",marginBottom:"20px"}}>
             <div key={data.id} style={{backgroundColor:"teal",width:"50%",padding:"20px"}}>
                     <h1 style={{color:"white"}}>City : {data.name}</h1>
+                    <h3 style={{color:"white"}}>Date :-{currentDate}</h3>
                 
                   <div style={{display:"flex",justifyContent:"space-around", backgroundColor:"whitesmoke",marginBottom:"20px"}}>
                     

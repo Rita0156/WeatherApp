@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div style="width: 100%; background-image: url(https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?cs=srgb&dl=pexels-pixabay-209831.jpg&fm=jpg);">
+        <div id="search">
+            <div id="inp">
+                <h1>City :</h1>
+                <input type="text" placeholder="Enter city name" id="city" />
+            </div>
+            <button id="btn">Search Weather</button>
+        </div>
+        <div id="container">
+
+        </div>
+        <div id="iframe">
+            <iframe width="600" height="500" id="gmap_canvas" src={iframe} frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        </div>
+    </div>
+</body>
+</html>
+<script src="index.js"></script>
