@@ -61,13 +61,14 @@ const Homepage=()=>{
         <div style={{backgroundImage:"url(https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?cs=srgb&dl=pexels-pixabay-209831.jpg&fm=jpg)"}} >
             <h1>Weather app</h1>
             <div style={{width:"90%",display:"flex",margin:"auto",justifyContent:"space-between",paddingLeft:"20px",paddingRight:"20px",paddingTop:"0px",paddingBottom:"0px",height:"20px"}}>
-                <div style={{display:"flex"}}>
-                <h2>City :</h2>
-                <input onChange={(e)=>setCity(e.target.value)} type="text" placeholder="enter city"/>
+                <div style={{display:"flex",alignItems:"center"}}>
+                <h2 style={{color:"white"}}>City :</h2>
+                <input style={{width:"1000px"}} onChange={(e)=>setCity(e.target.value)} type="text" placeholder="enter city"/>
                 </div>
                 <button onClick={handalCity} type="submit">Search Weather</button>
             </div>
-            <div style={{backgroundImage:"url(https://img.freepik.com/free-vector/dark-watercolor-background-design_1034-738.jpg)",width:"50%"}}>
+            <div style={{display:"flex",width:"90%",margin:"auto",justifyContent:"space-between"}}>
+            <div key={data.id} style={{backgroundImage:"url(https://img.freepik.com/free-vector/dark-watercolor-background-design_1034-738.jpg)",width:"50%"}}>
                     <h1 style={{color:"white"}}>City : {data.name}</h1>
                 
                   <div style={{display:"flex",justifyContent:"space-around", backgroundColor:"whitesmoke"}}>
@@ -77,25 +78,26 @@ const Homepage=()=>{
                   </div>
                   <div style={{display:"flex"}}>
                      <div>
-                     <h3>Sunrise : {}</h3>
-                     <h3>Sunset : {}</h3>
+                     <h3>Sunrise : {rise}</h3>
+                     <h3>Sunset : {set}</h3>
                      </div>
                      <div>
                         <img style={{borderRadius:"70px"}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQThRcEATwQkIxWTrZ43f6XnhKTmjYVDrRJkQ&usqp=CAU"/>
                      </div>
                   </div>
             </div>
-            <div>
+            
 
-            <div class="mapouter">
+            <div  style={{width:"50%"}}>
                 <div class="gmap_canvas">
                     <iframe width="600" height="500" id="gmap_canvas" src={iframe} frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                     
                         
-                        </div>
-                        </div>
+                </div>
+                        
 
 
+            </div>
             </div>
             <div style={{display:"flex",width:"95%",margin:"auto",justifyContent:"space-between"}}>
                 <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
