@@ -25,8 +25,12 @@ const Homepage=()=>{
             console.log(res)
             setData(res)
             
-            setMax(res.main.temp_max)
-            setMin(res.main.temp_min)
+        const mMax=(res.main.temp_max)
+        const mMin=(res.main.temp_min);
+        const Fmin=((Number(mMin)-32)*(5/9)-50)
+        const Fmax=((Number(mMax)-32)*(5/9)-50)
+            setMin(((Fmin-32)*0.57).toFixed(2))
+            setMax(((Fmax-32)*0.57).toFixed(2))
             setRise(res.sys.sunrise)
             setSet(res.sys.sunset)
             const iSrc=`https://maps.google.com/maps?q=${res.name},%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed`
@@ -74,8 +78,8 @@ const Homepage=()=>{
                 
                   <div style={{display:"flex",justifyContent:"space-around", backgroundColor:"whitesmoke",marginBottom:"20px"}}>
                     
-                      <h2>min temp - {min}</h2>
-                      <h2>max temp - {max}</h2>
+                      <h2>min temp - {min}°C</h2>
+                      <h2>max temp - {max}°C</h2>
                   </div>
                   <div style={{display:"flex",justifyContent:"space-between"}}>
                      <div>
@@ -104,44 +108,44 @@ const Homepage=()=>{
                 <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
                     <h3>Sun</h3>
                     <img style={{width:"100px",height:"100px"}} src="https://pnglib.nyc3.cdn.digitaloceanspaces.com/uploads/2020/11/sun-and-cloud-png_5fb26f319afd4.png"/>
-                    <h3>31.34'C</h3>
-                    <h3>23.15'C</h3>
+                    <h3>31.34 °C</h3>
+                    <h3>23.15 °C</h3>
                 </div>
                 <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}} >
                     <h3>Mon</h3>
                     <img style={{width:"100px",height:"100px"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Cartoon_cloud.svg/320px-Cartoon_cloud.svg.png"/>
-                    <h3>28.34'C</h3>
-                    <h3>20.15'C</h3>
+                    <h3>28.34 °C</h3>
+                    <h3>20.15 °C</h3>
                 </div>
                 <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
                     <h3>Tue</h3>
                     <img style={{width:"100px",height:"100px"}} src="https://assets.stickpng.com/images/5f48f8e868ecc70004ae6f8b.png"/>
-                    <h3>40.34'C</h3>
-                    <h3>35.15'C</h3>
+                    <h3>40.34 °C</h3>
+                    <h3>35.15 °C</h3>
                 </div>
                 <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
                     <h3>Wed</h3>
                     <img style={{width:"100px",height:"100px"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Cartoon_cloud.svg/320px-Cartoon_cloud.svg.png"/>
-                    <h3>31.34'C</h3>
-                    <h3>23.15'C</h3>
+                    <h3>31.34 °C</h3>
+                    <h3>23.15 °C</h3>
                 </div>
                 <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
                     <h3>Thu</h3>
                     <img style={{width:"100px",height:"100px"}} src="https://assets.stickpng.com/images/5f48f8e868ecc70004ae6f8b.png"/>
-                    <h3>27.34'C</h3>
-                    <h3>24.15'C</h3>
+                    <h3>27.34 °C</h3>
+                    <h3>24.15 °C</h3>
                 </div>
                 <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
                     <h3>Fri</h3>
                     <img style={{width:"100px",height:"100px"}} src="https://assets.stickpng.com/images/5f48f8e868ecc70004ae6f8b.png"/>
-                    <h3>30.34'C</h3>
-                    <h3>25.15'C</h3>
+                    <h3>30.34 °C</h3>
+                    <h3>25.15 °C</h3>
                 </div>
                 <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
                     <h3>Sat</h3>
                     <img style={{width:"100px",height:"100px"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Cartoon_cloud.svg/320px-Cartoon_cloud.svg.png"/>
-                    <h3>29.34'C</h3>
-                    <h3>18.15'C</h3>
+                    <h3>29.34 °C</h3>
+                    <h3>18.15 °C</h3>
                 </div>
             </div>
 
