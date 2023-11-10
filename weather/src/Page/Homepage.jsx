@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 //import Mapfunc from "../component/Map"
 import GoogalemapLoc from "./GoogleMap"
+import "./homepage.css"
 const Homepage=()=>{
     const images=["https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Weather-heavy-overcast.svg/2048px-Weather-heavy-overcast.svg.png",
                  "https://iconape.com/wp-content/png_logo_vector/rainy-weather-symbol-logo.png",
@@ -91,8 +92,8 @@ const Homepage=()=>{
     return (
         <div style={{backgroundImage:"url(https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?cs=srgb&dl=pexels-pixabay-209831.jpg&fm=jpg)",paddingTop:"20px"}} >
             
-            <div style={{width:"90%",display:"flex",margin:"auto",justifyContent:"space-between",paddingLeft:"20px",paddingRight:"20px",paddingTop:"0px",paddingBottom:"0px",height:"50px",boxShadow:"rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",marginBottom:"20px",marginTop:"20px"}}>
-                <div style={{display:"flex",alignItems:"center",alignSelf:"center"}}>
+            <div className="topbar" >
+                <div className="search" >
                 <h2 style={{color:"white"}}>City:-</h2>
                 <input style={{width:"900px",height:"45px",fontSize:"20px",textAlign:"center"}} onChange={(e)=>setCity(e.target.value)} type="text" placeholder="enter city name"/>
                 </div >
