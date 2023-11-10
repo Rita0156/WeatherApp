@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import Mapfunc from "../component/Map"
+//import Mapfunc from "../component/Map"
+import GoogalemapLoc from "./GoogleMap"
 const Homepage=()=>{
     const images=["https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Weather-heavy-overcast.svg/2048px-Weather-heavy-overcast.svg.png",
                  "https://iconape.com/wp-content/png_logo_vector/rainy-weather-symbol-logo.png",
@@ -53,7 +54,7 @@ const Homepage=()=>{
             }
             setRise(res.sys.sunrise)
             setSet(res.sys.sunset)
-            const iSrc=`https://maps.google.com/maps?q=${res.name},%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed`
+            const iSrc=`https://maps.google.com/maps?q=${city}&t=&z=13&ie=UTF8&iwloc=&output=embed`
             setiframe(iSrc)
         })
      }
@@ -122,8 +123,8 @@ const Homepage=()=>{
 
             <div  style={{width:"50%"}}>
                 <div class="gmap_canvas">
-                    <iframe width="600" height="500" id="gmap_canvas" src={iframe} frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                     
+                    <GoogalemapLoc gMap={iframe} />
                         
                 </div>
                         
