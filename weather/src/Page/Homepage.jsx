@@ -13,8 +13,8 @@ const Homepage=()=>{
     const [city,setCity]=useState("")
     const [data,setData]=useState([])
        //const [cur,setcur]=useState("")
-    const [lon,setLon]=useState("")
-    const [lat,setLet]=useState("")
+    //const [lon,setLon]=useState("")
+    //const [lat,setLet]=useState("")
     const [iframe,setiframe]=useState("")
        //const [cur,setCur]=useState("")
     const [max,setMax]=useState("")
@@ -29,13 +29,14 @@ const Homepage=()=>{
      const date = today. getDate();
      const day=today.getDay()
      const currentDate = date + "/" + month + "/" + year;
-     const fetchReq=()=>{
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&q=${city}&appid=${api_key}`)
+     const fetchReq=(lat,lon)=>{
+        console.log("calling api",lat,"lat",lon,"lon",city,"city",api_key,"api key")
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`)
         .then((req)=>{
             return req.json();
         })
         .then((res)=>{
-            console.log(res)
+            console.log(res,"res")
             setData(res)
             
         const mMax=(res.main.temp_max)
@@ -50,7 +51,7 @@ const Homepage=()=>{
             else if (max>20 && max<35){
                 setSrc("https://iconape.com/wp-content/png_logo_vector/rainy-weather-symbol-logo.png")
             }
-            else{
+            else if (max>35){
                 setSrc("https://clipart-library.com/data_images/193485.png")
             }
             setRise(res.sys.sunrise)
@@ -62,39 +63,43 @@ const Homepage=()=>{
 
      function getGeocur(){
         navigator.geolocation.getCurrentPosition(success)
-
+         
         function success(position){
+            console.log("inside success function",position)
             const latitude=position.coords.latitude
             const longitude=position.coords.longitude
-            fetchReq()
-            setLet(latitude)
-            setLon(longitude)
+            console.log("lat",latitude)
+           // setLet(latitude)
+            //setLon(longitude)
+            //console.log(lat)
+            //console
+            fetchReq(latitude,longitude)
+            
         }
      }
     
      
     const handalCity=()=>{
         getGeocur()
-        fetchReq()
+       fetchReq()
 
     }
+    
     useEffect(()=>{
-           fetchReq()
-           
-           
+        
+       
+        getGeocur() 
+
+         
     },[])
-    useEffect(()=>{
-        getGeocur()
-    },[])
-    useEffect(()=>{
-         handalCity()
-    },[])
+    
+    
     return (
         <div style={{backgroundImage:"url(https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?cs=srgb&dl=pexels-pixabay-209831.jpg&fm=jpg)",paddingTop:"20px"}} >
             
             <div className="topbar" >
                 <div className="search" >
-                <h2 style={{color:"white"}}>City:-</h2>
+                
                 <input style={{width:"900px",height:"45px",fontSize:"20px",textAlign:"center"}} onChange={(e)=>setCity(e.target.value)} type="text" placeholder="enter city name"/>
                 </div >
                 <button style={{width:"20%",fontSize:"20px",fontWeight:"bold"}} onClick={handalCity} type="submit">Search Weather</button>
@@ -123,7 +128,7 @@ const Homepage=()=>{
             
 
             <div  style={{width:"50%"}}>
-                <div class="gmap_canvas">
+                <div className="gmap_canvas">
                     
                     <GoogalemapLoc gMap={iframe} />
                         
