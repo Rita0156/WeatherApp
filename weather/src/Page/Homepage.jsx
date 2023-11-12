@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 //import Mapfunc from "../component/Map"
 import GoogalemapLoc from "./GoogleMap"
 import "./homepage.css"
+import Temperature from "./Temperature"
 const Homepage=()=>{
     const images=["https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Weather-heavy-overcast.svg/2048px-Weather-heavy-overcast.svg.png",
                  "https://iconape.com/wp-content/png_logo_vector/rainy-weather-symbol-logo.png",
@@ -11,7 +12,7 @@ const Homepage=()=>{
        // box-shadow: "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset";
        //api=`https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}`
     const [city,setCity]=useState("")
-    const [data,setData]=useState([])
+    const [name,setData]=useState([])
        //const [cur,setcur]=useState("")
     //const [lon,setLon]=useState("")
     //const [lat,setLet]=useState("")
@@ -23,12 +24,7 @@ const Homepage=()=>{
     const [set,setSet]=useState("")
       //const temp=''
      const api_key="3f9eb30a8c0b0d47f7cbdf5d16ba8100"
-     const today=new Date();
-     const month = today.getMonth()+1;
-     const year = today.getFullYear();
-     const date = today. getDate();
-     const day=today.getDay()
-     const currentDate = date + "/" + month + "/" + year;
+     
      const fetchReq=(lat,lon)=>{
         console.log("calling api",lat,"lat",lon,"lon",city,"city",api_key,"api key")
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`)
@@ -37,7 +33,7 @@ const Homepage=()=>{
         })
         .then((res)=>{
             console.log(res,"res")
-            setData(res)
+            setData(res.name)
             
         const mMax=(res.main.temp_max)
         const mMin=(res.main.temp_min);
@@ -106,25 +102,8 @@ const Homepage=()=>{
             </div>
             <h1 style={{color:"white"}}>Weather Information</h1>
             <div style={{display:"flex",width:"90%",margin:"auto",justifyContent:"space-between",marginBottom:"20px"}}>
-            <div key={data.id} style={{backgroundColor:"teal",width:"50%",padding:"20px"}}>
-                    <h1 style={{color:"white"}}>City : {data.name}</h1>
-                    <h3 style={{color:"white"}}>Date :-{currentDate}</h3>
-                    
-                  <div style={{display:"flex",justifyContent:"space-around", backgroundColor:"whitesmoke",marginBottom:"20px"}}>
-                    
-                      <h2>min temp - {min}°C</h2>
-                      <h2>max temp - {max}°C</h2>
-                  </div>
-                  <div style={{display:"flex",justifyContent:"space-between"}}>
-                     <div>
-                     <h3>Sunrise : {rise}</h3>
-                     <h3>Sunset : {set}</h3>
-                     </div>
-                     <div>
-                        <img style={{borderRadius:"70px"}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQThRcEATwQkIxWTrZ43f6XnhKTmjYVDrRJkQ&usqp=CAU"/>
-                     </div>
-                  </div>
-            </div>
+           
+               <Temperature cityName={name} min={min} max={max} rise={rise} set={set} />
             
 
             <div  style={{width:"50%"}}>
