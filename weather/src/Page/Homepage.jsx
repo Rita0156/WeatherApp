@@ -27,7 +27,7 @@ const Homepage=()=>{
      
      const fetchReq=(lat,lon)=>{
         console.log("calling api",lat,"lat",lon,"lon",city,"city",api_key,"api key")
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&q=${city}&appid=${api_key}`)
         .then((req)=>{
             return req.json();
         })
@@ -61,10 +61,10 @@ const Homepage=()=>{
         navigator.geolocation.getCurrentPosition(success)
          
         function success(position){
-            console.log("inside success function",position)
+            //console.log("inside success function",position)
             const latitude=position.coords.latitude
             const longitude=position.coords.longitude
-            console.log("lat",latitude)
+            //console.log("lat",latitude)
            // setLet(latitude)
             //setLon(longitude)
             //console.log(lat)
@@ -94,8 +94,8 @@ const Homepage=()=>{
         <div style={{backgroundImage:"url(https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?cs=srgb&dl=pexels-pixabay-209831.jpg&fm=jpg)",paddingTop:"20px"}} >
             
             <div className="topbar" >
-                <div className="search" >
-                
+                <div className="search" style={{}} >
+                <h3 style={{color:"white"}}>City :</h3>
                 <input style={{width:"900px",height:"45px",fontSize:"20px",textAlign:"center"}} onChange={(e)=>setCity(e.target.value)} type="text" placeholder="enter city name"/>
                 </div >
                 <button style={{width:"20%",fontSize:"20px",fontWeight:"bold"}} onClick={handalCity} type="submit">Search Weather</button>
