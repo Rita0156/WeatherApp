@@ -117,44 +117,44 @@ const Homepage=()=>{
 
             </div>
             </div>
-            <div style={{display:"flex",width:"95%",margin:"auto",justifyContent:"space-between"}}>
-                <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
+            <div  style={{display:"flex",width:"95%",margin:"auto",justifyContent:"space-between"}}>
+                <div className="weekday" >
                     <h3>Sun</h3>
                     <img style={{width:"100px",height:"100px"}} src={src}/>
                     <h3>31.34 °C</h3>
                     <h3>23.15 °C</h3>
                 </div>
-                <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}} >
+                <div className="weekday"  >
                     <h3>Mon</h3>
                     <img style={{width:"100px",height:"100px"}} src={src}/>
                     <h3>28.34 °C</h3>
                     <h3>20.15 °C</h3>
                 </div>
-                <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
+                <div className="weekday" >
                     <h3>Tue</h3>
                     <img style={{width:"100px",height:"100px"}} src={src}/>
                     <h3>40.34 °C</h3>
                     <h3>35.15 °C</h3>
                 </div>
-                <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
+                <div className="weekday" >
                     <h3>Wed</h3>
                     <img style={{width:"100px",height:"100px"}} src={src}/>
                     <h3>31.34 °C</h3>
                     <h3>23.15 °C</h3>
                 </div>
-                <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
+                <div className="weekday" >
                     <h3>Thu</h3>
                     <img style={{width:"100px",height:"100px"}} src={src}/>
                     <h3>27.34 °C</h3>
                     <h3>24.15 °C</h3>
                 </div>
-                <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
+                <div className="weekday" >
                     <h3>Fri</h3>
                     <img style={{width:"100px",height:"100px"}} src={src}/>
                     <h3>30.34 °C</h3>
                     <h3>25.15 °C</h3>
                 </div>
-                <div style={{backgroundColor:"rgba(0, 0, 0, 0.56)",padding:"20px",color:"white"}}>
+                <div className="weekday" >
                     <h3>Sat</h3>
                     <img style={{width:"100px",height:"100px"}} src={src}/>
                     <h3>29.34 °C</h3>
