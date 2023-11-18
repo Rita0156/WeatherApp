@@ -2,11 +2,12 @@ import { useEffect, useState } from "react"
 //import Mapfunc from "../component/Map"
 import GoogalemapLoc from "./GoogleMap"
 import "./homepage.css"
+import SevendayData from "./Sevenday"
 import Temperature from "./Temperature"
 const Homepage=()=>{
     
     const [src,setSrc]=useState("")
-    const [info,setInfo]=useState([])
+     const [parseCity,setParse]=useState("")
     const [city,setCity]=useState("")
     const [data,setData]=useState([])
      
@@ -20,15 +21,15 @@ const Homepage=()=>{
      const api_key="3f9eb30a8c0b0d47f7cbdf5d16ba8100"
      
      const fetchReq=(lat,lon)=>{
-       // console.log("calling api",lat,"lat",lon,"lon",city,"city",api_key,"api key")
+       
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&q=${city}&appid=${api_key}`)
         .then((req)=>{
             return req.json();
         })
         .then((res)=>{
-            console.log(res,"res")
+            console.log(res,"fetch req call")
             setData(res)
-            
+          setParse(res.name)  
         const mMax=(res.main.temp_max)
         const mMin=(res.main.temp_min);
         //console.log("max temp",mMax)
@@ -36,19 +37,13 @@ const Homepage=()=>{
         const Fmax=((Number(mMax)-273.15))
             setMin(Number(Fmin).toFixed(2))
             setMax(Number(Fmax).toFixed(2))
-            if(max<20){
-                setSrc("https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Weather-heavy-overcast.svg/2048px-Weather-heavy-overcast.svg.png")
-            }
-            else if (max>20 && max<35){
-                setSrc("https://iconape.com/wp-content/png_logo_vector/rainy-weather-symbol-logo.png")
-            }
-            else if (max>35){
-                setSrc("https://clipart-library.com/data_images/193485.png")
-            }
+            
             setRise(res.sys.sunrise)
             setSet(res.sys.sunset)
             
             setiframe(`https://maps.google.com/maps?q=${res.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`)
+
+            
 
         
 
@@ -59,6 +54,7 @@ const Homepage=()=>{
          })
      }
 
+    
      
      
 
@@ -66,17 +62,13 @@ const Homepage=()=>{
         navigator.geolocation.getCurrentPosition(success)
          
         function success(position){
-            //console.log("inside success function",position)
+            console.log("inside success function",position)
             const latitude=position.coords.latitude
             const longitude=position.coords.longitude
-            //console.log("lat",latitude)
-           // setLet(latitude)
-            //setLon(longitude)
-            //console.log(lat)
-            //console
-            //weekDayInfo(latitude,longitude)
-
+            
+            
             fetchReq(latitude,longitude)
+            
             
         }
      }
@@ -84,8 +76,9 @@ const Homepage=()=>{
     
      
     const handalCity=()=>{
-        getGeocur()
+        //getGeocur()
        fetchReq()
+       //sevenDay()
        
     }
     
@@ -94,6 +87,7 @@ const Homepage=()=>{
        
         getGeocur() 
         //weekDayInfo()
+        //SevendayData()
          
     },[])
     
@@ -121,23 +115,12 @@ const Homepage=()=>{
                         
                 </div>
                         
-
-
-            </div>
-            </div>
-            <div  style={{display:"flex",width:"95%",margin:"auto",justifyContent:"space-between"}}>
-                {info.map((item)=>(
-                   <div className="weekday" >
-                    <h3>Sun</h3>
-                    <img style={{width:"100px",height:"100px"}} src={src} alt="day"/>
-                    <h3>{item.min}°C</h3>
-                    <h3>{item.max}°C</h3>
-                   </div>
-                ))}
                 
-            </div>
 
-            
+            </div>
+            </div>
+           {<SevendayData cityName={parseCity} API={api_key} />}
+             
         </div>
     )
 }
