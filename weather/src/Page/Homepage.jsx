@@ -49,8 +49,17 @@ const Homepage=()=>{
             setSet(res.sys.sunset)
             
             setiframe(`https://maps.google.com/maps?q=${res.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`)
+
+        
+
+
         })
+        .catch((e)=>{
+                console.log(e)
+         })
      }
+
+     
      
 
      function getGeocur(){
@@ -65,27 +74,26 @@ const Homepage=()=>{
             //setLon(longitude)
             //console.log(lat)
             //console
+            //weekDayInfo(latitude,longitude)
+
             fetchReq(latitude,longitude)
             
         }
      }
-     function weekDayInfo(){
-        let week=`api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=7&appid=${api_key}`
-        
-     }
+     
     
      
     const handalCity=()=>{
         getGeocur()
        fetchReq()
-
+       
     }
     
     useEffect(()=>{
         
        
         getGeocur() 
-
+        //weekDayInfo()
          
     },[])
     
@@ -118,12 +126,14 @@ const Homepage=()=>{
             </div>
             </div>
             <div  style={{display:"flex",width:"95%",margin:"auto",justifyContent:"space-between"}}>
-                <div className="weekday" >
+                {info.map((item)=>(
+                   <div className="weekday" >
                     <h3>Sun</h3>
                     <img style={{width:"100px",height:"100px"}} src={src} alt="day"/>
-                    <h3>31.34 °C</h3>
-                    <h3>23.15 °C</h3>
-                </div>
+                    <h3>{item.min}°C</h3>
+                    <h3>{item.max}°C</h3>
+                   </div>
+                ))}
                 
             </div>
 
