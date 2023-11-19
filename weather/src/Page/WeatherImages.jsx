@@ -2,7 +2,7 @@ import { useState } from "react";
 
 
 function WeatherImages({temperature}){
-     const temp=temperature-273.15
+     const temp=temperature.main.temp_max-273.15
     const [image,setimage]=useState("");
     if(temp<23){
         setimage("https://icons.veryicon.com/png/o/weather/icon-by-qning/weather-icon-cloudy.png")

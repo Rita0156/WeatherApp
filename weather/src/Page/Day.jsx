@@ -2,38 +2,38 @@ import { useState } from "react"
 
 function DayFunc({props}){
      const [day,setday]=useState("")
-     const today=new Date(props.dt_text);
+     const date=props.dt_text.split(" ")
+     //const parts=date[0].split("/")
+     const today=new Date(date[0]);
+     const get=today.getUTCDay()
      
-     const dayNum=today.getDay()
-     console.log(today,"today is ",dayNum,"din")
-     switch (dayNum) {
-        case 0:setday("Sun")
-            
-            break;
-
-        case 1:setday("Mon")
-            
-            break;
-        case 2:setday("Tue")
-            
-            break;
-        case 3:setday("Wed")
-            
-            break;
-        case 4:setday("Thu")
-            
-            break;
-
-        case 5:setday("Fri")
-            
-            break;
-        case 6:setday("Sat")
-            
-            break;
+           
+    if(get===0){
+      setday("Sun")
+    }
+    else if(get===1){
+        setday("Mon")
+    }
+    else if(get===2){
+        setday("Tue")
+    }
+    else if(get===3){
+        setday("Wed")
+    }
+    else if(get===4){
+        setday("Thu")
         
-    
-     }
-     return (
+    }
+    else if(get===5){
+        setday("Fri")
+    }
+    else if(get===6){
+        setday("Sat")
+    }
+   // return weekDays;
+  // }
+
+    return(
         <h3>{day}</h3>
      )
 }

@@ -8,9 +8,10 @@ const Homepage=()=>{
     
     const [src,setSrc]=useState("")
      const [parseCity,setParse]=useState("")
+     const [info,setInfo]=useState([])
     const [city,setCity]=useState("")
     const [data,setData]=useState([])
-     
+    const information=[]
     const [iframe,setiframe]=useState("")
        
     const [max,setMax]=useState("")
@@ -72,23 +73,49 @@ const Homepage=()=>{
             
         }
      }
-     
+     const weekday=async()=>{
+        console.log("weekday");
+       await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${parseCity}&appid=${api_key}`)
+        .then((req)=>{
+            console.log("req call")
+            return req.json()
+        })
+        .then((res)=>{
+            console.log("res data")
+              console.log(res);
+              setInfo(res.list)
+              console.log(info,"information")
+              for(let i=0; i<info.length; i++){
+                if(i%8===0){
+                    information.push(info[i])
+                }
+            }
+        })
+    }
+   
+    
     
      
     const handalCity=()=>{
         //getGeocur()
        fetchReq()
        //sevenDay()
+       weekday()
        
     }
+   
     
     useEffect(()=>{
         
        
         getGeocur() 
         //weekDayInfo()
+        //weekday()
         //SevendayData()
          
+    },[])
+    useEffect(()=>{
+        weekday()
     },[])
     
     
@@ -98,9 +125,9 @@ const Homepage=()=>{
             <div className="topbar" >
                 <div className="search" style={{}} >
                 <h3 style={{color:"white"}}>City :</h3>
-                <input style={{width:"900px",height:"45px",fontSize:"20px",textAlign:"center"}} onChange={(e)=>setCity(e.target.value)} type="text" placeholder="enter city name"/>
+                <input  onChange={(e)=>setCity(e.target.value)} type="text" placeholder="enter city name"/>
                 </div >
-                <button style={{width:"20%",fontSize:"20px",fontWeight:"bold"}} onClick={handalCity} type="submit">Search Weather</button>
+                <button  onClick={handalCity} type="submit">Search Weather</button>
             </div>
             <h1 style={{color:"white"}}>Weather Information</h1>
             <div style={{display:"flex",width:"90%",margin:"auto",justifyContent:"space-between",marginBottom:"20px"}}>
@@ -119,7 +146,12 @@ const Homepage=()=>{
 
             </div>
             </div>
-           {<SevendayData cityName={parseCity} API={api_key} />}
+           <div>
+              {information.map((i)=>(
+                 <SevendayData maxTemp={i.main.temp_max}
+                 minTemp={i.main.temp_min} props={i} />
+              ))}
+           </div>
              
         </div>
     )
