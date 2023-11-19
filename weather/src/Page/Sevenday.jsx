@@ -40,7 +40,7 @@ const SevendayData=({cityName,API})=>{
        
         weekday()
        
-      },[])
+      },[cityName])
    
 
     
