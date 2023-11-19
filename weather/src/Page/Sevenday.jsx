@@ -50,7 +50,7 @@ const SevendayData=({cityName,API})=>{
                     
                     <div className="weekday">
                         {weatherDataMap.length>0 && weatherDataMap.map((item)=>(
-                            <div key={item.dt_text} className="weekday" style={{boxShadow:"rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;",display:'flex',flexDirection:"column",width:"15%"}} >
+                            <div key={item.dt_text} className="weekdayone"  >
                             
                            <DayFunc props={item}/>
                             <WeatherImages key={item.dt.txt} temperature={item} />

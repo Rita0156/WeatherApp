@@ -131,13 +131,15 @@ const Homepage=()=>{
             <h1 style={{color:"white"}}>Weather Information</h1>
             <div className="maping" >
            
-               <Temperature  cityName={data.name} min={min} max={max} rise={rise} set={set} />
+              <div className="temperature">
+                 <Temperature   cityName={data.name} min={min} max={max} rise={rise} set={set} />
+              </div>
             
 
            
-                <div style={{width:"45%"}} className="gmap_canvas">
+                <div  className="gmap_canvas">
                     
-                    <GoogalemapLoc  gMap={iframe} />
+                    <GoogalemapLoc style={{width:"100%"}}  gMap={iframe} />
                         
                 
                         

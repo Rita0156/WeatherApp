@@ -5,8 +5,13 @@
    justify-content: space-between; 
    
 }
+.weekdayone{
+    width: 18%;
+    padding: 10px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) and (min-width:100px) {
    .weekday{
       width: 95%;
       display: grid;
@@ -16,16 +21,28 @@
       
       
    }
+   .weekdayone{
+      width: 48%;
+      padding: 10px;
+      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+      margin: auto;
+  }
  }
 
- @media only screen and (mn-width: 600px) and (max-width:1200px) {
+ @media only screen and (min-width: 601px) and (max-width:1200px) {
    .weekday{
       width: 95%;
       display: grid;
-      gap: 15px;
+      gap: 10px;
       grid-template-columns: repeat(3,1fr);
       margin: auto;
       
       
    }
+   .weekdayone{
+      width: 32%;
+      padding: 40px;
+      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+      margin: auto;
+  }
  }
