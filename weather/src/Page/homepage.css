@@ -32,7 +32,17 @@
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     margin-bottom: 30px;
 }
+.maping{
+    width: 90%;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
 
-@media screen and (maxWidth) and(minWidth) {
-    
+@media screen and (max-width:600px) and(min-width:1200px) {
+    .maping{
+        display: flex;
+        flex-direction: column;
+    }
 }

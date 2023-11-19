@@ -129,7 +129,7 @@ const Homepage=()=>{
                 <button  onClick={handalCity} type="submit">Search Weather</button>
             </div>
             <h1 style={{color:"white"}}>Weather Information</h1>
-            <div style={{display:"flex",width:"90%",margin:"auto",justifyContent:"space-between",marginBottom:"20px"}}>
+            <div className="maping" >
            
                <Temperature  cityName={data.name} min={min} max={max} rise={rise} set={set} />
             

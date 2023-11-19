@@ -5,3 +5,27 @@
    justify-content: space-between; 
    
 }
+
+@media only screen and (max-width: 600px) {
+   .weekday{
+      width: 95%;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      margin: auto;
+      gap: 10px;
+      
+      
+   }
+ }
+
+ @media only screen and (mn-width: 600px) and (max-width:1200px) {
+   .weekday{
+      width: 95%;
+      display: grid;
+      gap: 15px;
+      grid-template-columns: repeat(3,1fr);
+      margin: auto;
+      
+      
+   }
+ }
