@@ -1,0 +1,7 @@
+.weekday{
+   width: 95%;
+   display: flex;
+   margin: auto;
+   justify-content: space-between; 
+   
+}

@@ -1,10 +1,10 @@
 
 
-
+import "./gmap.css"
 export default function GoogalemapLoc({gMap}){
     return (
-        <div>
-            <iframe style={{ width:"80%",
+        <div className="gmap">
+            <iframe className="ifram" style={{ 
              height:"500px",
               
                frameBorder:"0",

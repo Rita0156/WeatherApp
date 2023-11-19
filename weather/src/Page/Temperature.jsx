@@ -10,7 +10,7 @@ const Temperature=({cityName,min,max,rise,set})=>{
      const [weekDay,setweekDay]=useState("")
      
     return (
-        <div>
+        <div className="cont">
             <div>
             <div className="info" >
                     <h1 style={{color:"white"}}>City : {cityName}</h1>

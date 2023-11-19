@@ -8,10 +8,10 @@ const Homepage=()=>{
     
     const [src,setSrc]=useState("")
      const [parseCity,setParse]=useState("")
-     const [info,setInfo]=useState([])
+    // const [info,setInfo]=useState([])
     const [city,setCity]=useState("")
     const [data,setData]=useState([])
-    const information=[]
+    //const information=[]
     const [iframe,setiframe]=useState("")
        
     const [max,setMax]=useState("")
@@ -73,25 +73,26 @@ const Homepage=()=>{
             
         }
      }
-     const weekday=async()=>{
-        console.log("weekday");
-       await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${parseCity}&appid=${api_key}`)
-        .then((req)=>{
-            console.log("req call")
-            return req.json()
-        })
-        .then((res)=>{
-            console.log("res data")
-              console.log(res);
-              setInfo(res.list)
-              console.log(info,"information")
-              for(let i=0; i<info.length; i++){
-                if(i%8===0){
-                    information.push(info[i])
-                }
-            }
-        })
-    }
+    //  const weekday=async()=>{
+    //     console.log("weekday");
+    //    await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${parseCity}&appid=${api_key}`)
+    //     .then((req)=>{
+    //         console.log("req call")
+    //         return req.json()
+    //     })
+    //     .then((res)=>{
+    //         console.log("res data")
+    //           console.log(res,"7 day week day data");
+    //           setInfo(res.list)
+    //           console.log(info,"information")
+    //           for(let i=0; i<info.length; i++){
+    //             if(i%8===0){
+    //                 information.push(info[i])
+    //             }
+    //         }
+    //         console.log(information,"data getting")
+    //     })
+    // }
    
     
     
@@ -100,7 +101,7 @@ const Homepage=()=>{
         //getGeocur()
        fetchReq()
        //sevenDay()
-       weekday()
+       //weekday()
        
     }
    
@@ -114,9 +115,7 @@ const Homepage=()=>{
         //SevendayData()
          
     },[])
-    useEffect(()=>{
-        weekday()
-    },[])
+   
     
     
     return (
@@ -132,25 +131,22 @@ const Homepage=()=>{
             <h1 style={{color:"white"}}>Weather Information</h1>
             <div style={{display:"flex",width:"90%",margin:"auto",justifyContent:"space-between",marginBottom:"20px"}}>
            
-               <Temperature cityName={data.name} min={min} max={max} rise={rise} set={set} />
+               <Temperature  cityName={data.name} min={min} max={max} rise={rise} set={set} />
             
 
-            <div  style={{width:"50%"}}>
-                <div className="gmap_canvas">
+           
+                <div style={{width:"45%"}} className="gmap_canvas">
                     
-                    <GoogalemapLoc gMap={iframe} />
+                    <GoogalemapLoc  gMap={iframe} />
                         
-                </div>
+                
                         
                 
 
-            </div>
+                </div>
             </div>
            <div>
-              {information.map((i)=>(
-                 <SevendayData maxTemp={i.main.temp_max}
-                 minTemp={i.main.temp_min} props={i} />
-              ))}
+             {parseCity && <SevendayData cityName={parseCity} API={api_key} />}
            </div>
              
         </div>
